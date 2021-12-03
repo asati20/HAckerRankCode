@@ -1,0 +1,30 @@
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        leftparenthesis=0
+        rightparenthesis= 0
+        pstr=""
+        for i in range(len(s)):
+            if s[i]== "(":
+                leftparenthesis +=1
+            if (s[i]==")") & (leftparenthesis==0):
+                continue
+            if (s[i]==")") & (leftparenthesis>0) :
+                leftparenthesis -=1
+            pstr+=str(s[i])
+            #print("hello",pstr)
+        leftparenthesis=0
+        rightparenthesis= 0
+        i = len(pstr)-1
+        tstr =""
+        while i>=0:
+            if (pstr[i]==")"): 
+                rightparenthesis+=1
+            if (pstr[i]=="(") and (rightparenthesis==0):
+                i-=1
+                continue
+            if (pstr[i]=="(") and (rightparenthesis>0):
+                rightparenthesis-=1
+            tstr+=str(pstr[i])
+            i-=1
+        return tstr[::-1]            
+            
