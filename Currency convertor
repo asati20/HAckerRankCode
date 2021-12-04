@@ -1,0 +1,19 @@
+#basic info 
+#A>B=2
+#B>C=4
+#C>D=5
+#F>B=9
+a={"A": 1}
+A= [["A","B",2],["B","C",4],["C","D",8], ["F","B", 9],["A","B", 10],["A","B", 11], ["B","C", 10]]
+for j in range(len(A)):
+  for i in range(len(A)):
+    if (A[i][1] not in a) and (A[i][0] in a) :
+      a[A[i][1]]= a[A[i][0]]*A[i][2]
+    if (A[i][1] in a) and (A[i][0] in a):
+      if a[A[i][1]] < a[A[i][0]]*A[i][2]:
+        a[A[i][1]] = a[A[i][0]]*A[i][2]
+      else:
+        continue 
+    if (A[i][0]  not in a):
+      a[A[i][0]] = 0
+print(a)
